@@ -22,6 +22,7 @@ class HTMLToTextileParser < SGMLParser
   attr_accessor :in_block
   attr_accessor :data_stack
   attr_accessor :a_href
+  attr_accessor :a_title
   attr_accessor :in_ul
   attr_accessor :in_ol
   
@@ -458,18 +459,21 @@ class HTMLToTextileParser < SGMLParser
   def start_a(attrs)
     attrs = attrs_to_hash(attrs)
     self.a_href = attrs['href']
-
-    if self.a_href
+    self.a_title = attrs['title']
+    if self.a_href:
       write(" \"")
+      write('(' + attrs['class'] + ')') if attrs['class']
       start_capture("a")
     end
   end
 
   def end_a
-    if self.a_href
+    if self.a_href:
       stop_capture_and_write
+      write('(' + self.a_title + ')') if self.a_title
       write(["\":", self.a_href, " "])
-      self.a_href = false
+
+      self.a_href = self.a_title = false
     end
   end
 
