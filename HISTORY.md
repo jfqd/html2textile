@@ -1,11 +1,3 @@
-# HTML2Textile #
-
-A quick and simple way to convert HTML to Textile.
-
-    parser = HTMLToTextileParser.new
-    parser.feed(your_html)
-    puts parser.to_textile
-
 ## Introduction From 2007 ##
 
 One of the many tricky decisions to be made when building content management tools is how to allow users to control the basic formatting of their input without breaking your carefully crafted layouts or injecting nasty hacks into your pages. One approach has long been to provide your own markup language. Instead of allowing users to write HTML, let them use bbcode, or markdown, or textile, which have more controlled vocabularies and rules that mean it’s much less likely that problems will occur.

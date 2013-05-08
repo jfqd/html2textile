@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'html2textile'
+
+unless ARGV.length > 0
+  puts "Missing input file(s)."
+  puts "Usage: html2textile <file1 [file2 [...]]>"
+end
+
+ARGV.each do |filename|
+  unless File.exists?(filename)
+    abort("Illegal argument. Unable to open #{filename}.")
+  end
+end
+
+ARGV.each do |filename|
+  File.open(filename, 'r') do |file|
+    parser = HTMLToTextileParser.new
+    parser.feed(file.read)
+    puts parser.to_textile
+  end
+end
