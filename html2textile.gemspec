@@ -14,6 +14,6 @@ Gem::Specification.new do |s|
   s.homepage          = 'http://github.com/olle/html2textile'
 
   s.require_path = 'lib'
-  s.files        = Dir.glob("{lib,spec}/**/*") + %w(example.rb README.md HISTORY.md)
+  s.files        = Dir.glob("{bin,lib,spec}/**/*") + %w(example.rb README.md HISTORY.md)
   s.executables  = 'html2textile'
 end
